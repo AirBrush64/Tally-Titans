@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Tally Titans"
 include(":app")
+include(":app:login")
