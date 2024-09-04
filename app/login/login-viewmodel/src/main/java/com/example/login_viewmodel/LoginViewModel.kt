@@ -2,13 +2,15 @@ package com.example.login_viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.login_data.LoginApiInterface
+import com.example.login_data.LoginRepository
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
-    // Mutable state for username, password, and loading status
+class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
+
     private val _username = MutableStateFlow("")
     val username = _username.asStateFlow()
 
@@ -18,25 +20,26 @@ class LoginViewModel : ViewModel() {
     private val _isLoading = MutableStateFlow(false)
     val isLoading = _isLoading.asStateFlow()
 
-    // Function to update the username
+    private val _loginResult = MutableStateFlow<Result<LoginApiInterface.LoginResponse>?>(null)
+    val loginResult = _loginResult.asStateFlow()
+
+    // Benutzername aktualisieren
     fun onUsernameChanged(newUsername: String) {
         _username.value = newUsername
     }
 
-    // Function to update the password
+    // Passwort aktualisieren
     fun onPasswordChanged(newPassword: String) {
         _password.value = newPassword
     }
 
-    // Simulate a login process
+    // Login-Funktion aufrufen
     fun login() {
-        // Start loading
         _isLoading.value = true
-
-        // Simulate a login delay
         viewModelScope.launch {
-            delay(2000) // Simulate network request
-            // Stop loading
+            delay(3000)
+            val result = repository.login(username.value, password.value)
+            _loginResult.value = result
             _isLoading.value = false
         }
     }

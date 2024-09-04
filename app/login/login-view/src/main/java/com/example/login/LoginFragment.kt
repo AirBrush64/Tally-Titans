@@ -13,13 +13,23 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.login_viewmodel.LoginViewModel
+import com.example.login_viewmodel.LoginViewModelFactory
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var isLoading by remember { mutableStateOf(false) }
+fun LoginScreen(
+    loginViewModel: LoginViewModel = viewModel(factory = LoginViewModelFactory()),
+    navController: NavHostController
+) {
+    // Den UI-State vom ViewModel abrufen
+    val username by loginViewModel.username.collectAsState()
+    val password by loginViewModel.password.collectAsState()
+    val isLoading by loginViewModel.isLoading.collectAsState()
+    val loginResult by loginViewModel.loginResult.collectAsState()
 
     Scaffold(
         topBar = {
@@ -47,9 +57,10 @@ fun LoginScreen() {
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
 
+                // Benutzername-Eingabe
                 OutlinedTextField(
                     value = username,
-                    onValueChange = { username = it },
+                    onValueChange = { loginViewModel.onUsernameChanged(it) },
                     label = { Text("Username") },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -59,9 +70,10 @@ fun LoginScreen() {
                     )
                 )
 
+                // Passwort-Eingabe
                 OutlinedTextField(
                     value = password,
-                    onValueChange = { password = it },
+                    onValueChange = { loginViewModel.onPasswordChanged(it) },
                     label = { Text("Password") },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -73,9 +85,10 @@ fun LoginScreen() {
                     )
                 )
 
+                // Login Button
                 Button(
                     onClick = {
-                        isLoading = true
+                        loginViewModel.login()
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -91,13 +104,28 @@ fun LoginScreen() {
                         Text("Log In")
                     }
                 }
+
+                // Anzeigen des Login-Ergebnisses
+                loginResult?.let { result ->
+                    when {
+                        result.isSuccess -> {
+                            Text(
+                                text = "Login erfolgreich!",
+                                modifier = Modifier.padding(top = 16.dp),
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            navController.navigate("home")
+                        }
+                        result.isFailure -> {
+                            Text(
+                                text = "Login fehlgeschlagen: ${result.exceptionOrNull()?.message}",
+                                color = MaterialTheme.colorScheme.error,
+                                modifier = Modifier.padding(top = 16.dp)
+                            )
+                        }
+                    }
+                }
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewLoginScreen() {
-    LoginScreen()
 }

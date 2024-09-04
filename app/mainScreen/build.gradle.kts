@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.login.loginview"
+    namespace = "com.example.mainscreen"
     compileSdk = 34
 
     defaultConfig {
@@ -44,10 +44,7 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.junit.ktx)
-    implementation(project(":app:login:login-viewmodel"))
-    implementation(project(":app:login:login-data"))
     implementation(libs.androidx.navigation.runtime.ktx)
     testImplementation(libs.testng)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-
 }

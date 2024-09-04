@@ -4,7 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.login.LoginScreen
+import com.example.login_viewmodel.LoginViewModel
+import com.example.mainscreen.HomeScreen
 import com.example.tallytitans.ui.theme.TallyTitansTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,8 +19,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TallyTitansTheme {
-                LoginScreen()
+                MainApp()
             }
+        }
+    }
+}
+
+@Composable
+fun MainApp() {
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "login") {
+        composable("login") {
+            LoginScreen(navController = navController)
+        }
+        composable("home") {
+            HomeScreen(navController = navController)
         }
     }
 }

@@ -11,10 +11,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/login" />
+            <option value="$PROJECT_DIR$/app/login/login-data" />
             <option value="$PROJECT_DIR$/app/login/login-view" />
             <option value="$PROJECT_DIR$/app/login/login-viewmodel" />
             <option value="$PROJECT_DIR$/app/main" />
-            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/app/mainScreen" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
