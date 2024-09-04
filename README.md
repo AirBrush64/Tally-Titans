@@ -1,4 +1,4 @@
-# Tally-Titans
+# Tally-Titans FRONTEND
 
 Tally Titans Character Counter is a fast-paced counting word game where players must determine the number of distinct letters in a given word.
 
