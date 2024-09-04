@@ -43,4 +43,6 @@ dependencies {
     implementation(libs.androidx.ui.android)
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(libs.androidx.junit.ktx)
+    testImplementation(libs.testng)
 }
