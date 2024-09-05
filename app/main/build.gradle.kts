@@ -56,20 +56,19 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.text.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.compose.ui.graphics)     // Jetpack Compose Graphics
+    implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
+    implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
     implementation(project(":app:login:login-view"))
     implementation(project(":app:login:login-viewmodel"))
     implementation(libs.androidx.navigation.compose)
     implementation(project(":app:mainScreen"))
     implementation(project(":app:register:register-view"))
-    implementation(project(":app:register:register-view"))
+    implementation(project(":app:register:register-viewmodel"))
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)}

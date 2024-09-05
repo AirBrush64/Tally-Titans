@@ -33,11 +33,11 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.lifecycle.viewmodel.android)
+    implementation(libs.androidx.lifecycle.viewmodel.compose) // ViewModel + Compose Integration
+    implementation(libs.androidx.navigation.compose) // Falls du Compose Navigation verwendest
     implementation(project(":app:register:register-data"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 
 class LoginFragment : Fragment() {
     private lateinit var navController: NavController
@@ -16,7 +17,7 @@ class LoginFragment : Fragment() {
     ): View? {
         val view = ComposeView(requireContext()).apply {
             setContent {
-                LoginScreen(navController = navController)
+                LoginScreen(navController = findNavController())
             }
         }
         return view
