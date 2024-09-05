@@ -36,7 +36,7 @@ fun MainApp() {
         composable("home") {
             HomeScreen(navController = navController)
         }
-        composable("home") {
+        composable("register") {
             RegisterScreen(navController = navController)
         }
     }

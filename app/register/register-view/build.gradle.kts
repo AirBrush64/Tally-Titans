@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.register_view"
+    namespace = "com.example.login.loginview"
     compileSdk = 34
 
     defaultConfig {
@@ -24,25 +24,34 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 }
 
 dependencies {
-    implementation(libs.androidx.material3.android)
-    implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.ui.tooling.preview.android)
-    implementation(libs.androidx.junit.ktx)
-    implementation(project(":app:login:login-viewmodel"))
-    implementation(project(":app:login:login-data"))
-    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.compose.ui.graphics)     // Jetpack Compose Graphics
+    implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
+    implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose) // ViewModel für Compose
+
+    // Projekt-Abhängigkeiten
     implementation(project(":app:register:register-viewmodel"))
-    implementation(libs.fragment.ktx)
+    implementation(project(":app:register:register-data"))
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.material3.android)
+
+    // Testabhängigkeiten
     testImplementation(libs.testng)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.junit.ktx) // Falls Tests
 }

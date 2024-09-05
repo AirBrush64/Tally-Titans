@@ -39,12 +39,12 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.material3.android)
-    implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(libs.androidx.compose.ui.graphics)     // Jetpack Compose Graphics
+    implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
+    implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
     implementation(libs.androidx.junit.ktx)
     implementation(libs.androidx.navigation.runtime.ktx)
     testImplementation(libs.testng)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.compose.material3)
 }

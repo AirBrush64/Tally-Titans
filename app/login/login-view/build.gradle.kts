@@ -39,16 +39,17 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.material3.android)
-    implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(libs.androidx.compose.ui.graphics)     // Jetpack Compose Graphics
+    implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
+    implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
     implementation(libs.androidx.junit.ktx)
     implementation(project(":app:login:login-viewmodel"))
     implementation(project(":app:login:login-data"))
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.testng)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.compose.material3)
 }
