@@ -9,8 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.login.LoginScreen
-import com.example.login_viewmodel.LoginViewModel
 import com.example.mainscreen.HomeScreen
+import com.example.register_view.RegisterScreen
 import com.example.tallytitans.ui.theme.TallyTitansTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,6 +35,9 @@ fun MainApp() {
         }
         composable("home") {
             HomeScreen(navController = navController)
+        }
+        composable("home") {
+            RegisterScreen(navController = navController)
         }
     }
 }

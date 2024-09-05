@@ -64,6 +64,8 @@ dependencies {
     implementation(project(":app:login:login-viewmodel"))
     implementation(libs.androidx.navigation.compose)
     implementation(project(":app:mainScreen"))
+    implementation(project(":app:register:register-view"))
+    implementation(project(":app:register:register-view"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

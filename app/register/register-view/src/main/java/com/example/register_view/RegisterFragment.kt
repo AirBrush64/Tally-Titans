@@ -1,4 +1,4 @@
-package com.example.login
+package com.example.register_view
 
 import androidx.fragment.app.Fragment
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.NavController
 
-class LoginFragment : Fragment() {
+class RegisterFragment : Fragment() {
     private lateinit var navController: NavController
 
     override fun onCreateView(
@@ -16,7 +16,7 @@ class LoginFragment : Fragment() {
     ): View? {
         val view = ComposeView(requireContext()).apply {
             setContent {
-                LoginScreen(navController = navController)
+                RegisterScreen(navController = navController)
             }
         }
         return view

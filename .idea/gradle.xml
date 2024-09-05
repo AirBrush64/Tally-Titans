@@ -16,6 +16,10 @@
             <option value="$PROJECT_DIR$/app/login/login-viewmodel" />
             <option value="$PROJECT_DIR$/app/main" />
             <option value="$PROJECT_DIR$/app/mainScreen" />
+            <option value="$PROJECT_DIR$/app/register" />
+            <option value="$PROJECT_DIR$/app/register/register-data" />
+            <option value="$PROJECT_DIR$/app/register/register-view" />
+            <option value="$PROJECT_DIR$/app/register/register-viewmodel" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

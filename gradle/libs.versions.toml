@@ -30,8 +30,12 @@ retrofit = "2.9.0"
 navigationCompose = "2.7.7"
 navigationRuntimeKtx = "2.7.7"
 runtimeAndroid = "1.6.8"
+lifecycleViewmodelAndroid = "2.8.4"
+fragment = "1.6.1"
+fragmentKtx = "1.8.2"
 
 [libraries]
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 androidx-compose-bom-v202410 = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
@@ -73,6 +77,8 @@ testng = { group = "org.testng", name = "testng", version.ref = "testng" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
+androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
+fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

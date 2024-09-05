@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.login.loginview"
+    namespace = "com.example.register_view"
     compileSdk = 34
 
     defaultConfig {
@@ -24,17 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_19
-        targetCompatibility = JavaVersion.VERSION_19
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "19"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
+        jvmTarget = "1.8"
     }
 }
 
@@ -47,8 +41,8 @@ dependencies {
     implementation(project(":app:login:login-viewmodel"))
     implementation(project(":app:login:login-data"))
     implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.androidx.navigation.compose)
+    implementation(project(":app:register:register-viewmodel"))
+    implementation(libs.fragment.ktx)
     testImplementation(libs.testng)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.fragment.ktx)
 }
