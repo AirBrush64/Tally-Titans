@@ -29,7 +29,7 @@ fun LoginScreen(
     navController: NavController
 ) {
     // Den UI-State vom ViewModel abrufen
-    val username by loginViewModel.username.collectAsState()
+    val email by loginViewModel.username.collectAsState()
     val password by loginViewModel.password.collectAsState()
     val isLoading by loginViewModel.isLoading.collectAsState()
     val loginResult by loginViewModel.loginResult.collectAsState()
@@ -70,9 +70,9 @@ fun LoginScreen(
 
                 // Benutzername-Eingabe
                 OutlinedTextField(
-                    value = username,
-                    onValueChange = { loginViewModel.onUsernameChanged(it) },
-                    label = { Text("Username") },
+                    value = email,
+                    onValueChange = { loginViewModel.onEmailChanged(it) },
+                    label = { Text("Email") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 16.dp),

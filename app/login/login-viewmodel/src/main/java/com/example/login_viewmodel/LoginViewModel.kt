@@ -24,7 +24,7 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
     val loginResult = _loginResult.asStateFlow()
 
     // Benutzername aktualisieren
-    fun onUsernameChanged(newUsername: String) {
+    fun onEmailChanged(newUsername: String) {
         _username.value = newUsername
     }
 
