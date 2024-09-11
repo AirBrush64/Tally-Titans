@@ -1,5 +1,6 @@
 package com.example.tallytitans
 
+import HomeScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,7 +10,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.login.LoginScreen
-import com.example.mainscreen.HomeScreen
 import com.example.register_view.RegisterScreen
 import com.example.tallytitans.ui.theme.TallyTitansTheme
 
@@ -34,7 +34,7 @@ fun MainApp() {
             LoginScreen(navController = navController)
         }
         composable("home") {
-            HomeScreen(navController = navController)
+            HomeScreen(navController = navController, onProfileClick = { navController.navigate("home") })
         }
         composable("register") {
             RegisterScreen(navController = navController)
