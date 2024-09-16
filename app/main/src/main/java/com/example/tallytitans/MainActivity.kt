@@ -1,6 +1,7 @@
 package com.example.tallytitans
 
-import HomeScreen
+import GameScreen
+import UserMainScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -34,10 +35,13 @@ fun MainApp() {
             LoginScreen(navController = navController)
         }
         composable("home") {
-            HomeScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+            UserMainScreen(navController = navController, onProfileClick = { navController.navigate("home") })
         }
         composable("register") {
             RegisterScreen(navController = navController)
+        }
+        composable("game") {
+            GameScreen(navController = navController)
         }
     }
 }

@@ -9,9 +9,21 @@ interface LoginApiInterface {
         val password: String
     )
 
+    // Neue Datenklasse, die den Benutzer enthält
+    data class User(
+        val user_id: Int,
+        val username: String,
+        val highscore: Int,
+        val role: String,
+        val is_approved: String,
+        val email: String,
+        val password_hash: String
+    )
+
+    // Aktualisierte LoginResponse-Datenklasse
     data class LoginResponse(
-        val token: String,
-        val success: Boolean
+        val message: String,
+        val user: User  // Benutzer-Objekt
     )
 
     interface ApiService {

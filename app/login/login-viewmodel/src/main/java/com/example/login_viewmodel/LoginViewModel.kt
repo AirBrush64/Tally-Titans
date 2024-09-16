@@ -1,5 +1,7 @@
 package com.example.login_viewmodel
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.login_data.LoginApiInterface
@@ -9,7 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val context: Context, private val repository: LoginRepository) : ViewModel() {
 
     private val _username = MutableStateFlow("")
     val username = _username.asStateFlow()
@@ -37,10 +39,23 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
     fun login() {
         _isLoading.value = true
         viewModelScope.launch {
-            delay(3000)
+            delay(3000)  // Simuliert eine Wartezeit (kann entfernt werden)
             val result = repository.login(username.value, password.value)
             _loginResult.value = result
+
+            result.onSuccess { loginResponse ->
+                val userId = loginResponse.user.user_id
+                Log.d("LoginViewModel", "User ID: $userId")
+                saveUserIdToPreferences(userId)
+            }
+
             _isLoading.value = false
         }
+    }
+
+    private fun saveUserIdToPreferences(userId: Int) {
+        val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putInt("user_id", userId).commit()  // commit, um sicherzustellen, dass die Daten sofort gespeichert werden
+        Log.d("LoginViewModel", "User ID saved in SharedPreferences: $userId")
     }
 }

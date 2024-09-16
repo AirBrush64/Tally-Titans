@@ -10,16 +10,23 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/gameScreen" />
+            <option value="$PROJECT_DIR$/app/gameScreen/gameScreen-data" />
+            <option value="$PROJECT_DIR$/app/gameScreen/gameScreen-view" />
+            <option value="$PROJECT_DIR$/app/gameScreen/gameScreen-viewModel" />
             <option value="$PROJECT_DIR$/app/login" />
             <option value="$PROJECT_DIR$/app/login/login-data" />
             <option value="$PROJECT_DIR$/app/login/login-view" />
             <option value="$PROJECT_DIR$/app/login/login-viewmodel" />
             <option value="$PROJECT_DIR$/app/main" />
-            <option value="$PROJECT_DIR$/app/mainScreen" />
             <option value="$PROJECT_DIR$/app/register" />
             <option value="$PROJECT_DIR$/app/register/register-data" />
             <option value="$PROJECT_DIR$/app/register/register-view" />
             <option value="$PROJECT_DIR$/app/register/register-viewmodel" />
+            <option value="$PROJECT_DIR$/app/userMainScreen" />
+            <option value="$PROJECT_DIR$/app/userMainScreen/userMainScreen-data" />
+            <option value="$PROJECT_DIR$/app/userMainScreen/userMainScreen-view" />
+            <option value="$PROJECT_DIR$/app/userMainScreen/userMainScreen-viewModel" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

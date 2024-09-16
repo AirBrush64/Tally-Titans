@@ -49,7 +49,7 @@ dependencies {
     implementation(project(":app:register:register-viewmodel"))
     implementation(project(":app:register:register-data"))
     implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.material3.android)
+    implementation(libs.androidx.material3.android)
 
     // Testabhängigkeiten
     testImplementation(libs.testng)
