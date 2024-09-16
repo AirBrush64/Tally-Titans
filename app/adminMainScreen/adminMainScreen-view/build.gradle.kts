@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.usermainscreen_view"
+    namespace = "com.example.adminmainscreen_view"
     compileSdk = 34
 
     defaultConfig {
@@ -24,11 +24,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 }
 
@@ -37,18 +43,13 @@ dependencies {
     implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
     implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
     implementation(libs.androidx.junit.ktx)
-    implementation(project(":app:login:login-viewmodel"))
-    implementation(project(":app:login:login-data"))
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.material3.android)
+    implementation(project(":app:adminMainScreen:adminMainScreen-viewModel"))
+    implementation(project(":app:adminMainScreen:adminMainScreen-data"))
+    implementation(libs.androidx.ui.text.android)
     testImplementation(libs.testng)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.fragment.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

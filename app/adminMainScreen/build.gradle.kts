@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.usermainscreen"
+    namespace = "com.example.adminmainscreen"
     compileSdk = 34
 
     defaultConfig {
@@ -24,20 +24,46 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
     }
 }
 
 dependencies {
-
+    // Standard-Implementierungen
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(platform(libs.androidx.compose.bom))
+
+    // MVVM Untermodule hinzufügen
+    implementation(project(":app:adminMainScreen:adminMainScreen-viewModel"))
+    implementation(project(":app:adminMainScreen:adminMainScreen-data"))
+    implementation(project(":app:adminMainScreen:adminMainScreen-view"))
+
+    // Jetpack Compose Abhängigkeiten
+    implementation(libs.androidx.compose.ui.graphics)     // Jetpack Compose Graphics
+    implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
+    implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
+    implementation(libs.androidx.lifecycle.viewmodel.compose)  // ViewModel für Compose
+    implementation(libs.androidx.navigation.runtime.ktx)  // Navigation Runtime
+    implementation(libs.androidx.navigation.compose)
+    implementation(platform(libs.androidx.compose.bom))
+
+    // Material Design 3
+    implementation(libs.androidx.material3.android)
+
+    // Fragment Unterstützung
+    implementation(libs.androidx.fragment.ktx)
+
+    // Test-Implementierungen
     testImplementation(libs.junit)
+    testImplementation(libs.testng)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.junit.ktx)
+
 }
