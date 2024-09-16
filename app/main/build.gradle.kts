@@ -58,18 +58,23 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.compose.ui.graphics)     // Jetpack Compose Graphics
     implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
-    implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.navigation.compose) // Jetpack Compose Foundation
     implementation(project(":app:login:login-view"))
     implementation(project(":app:login:login-viewmodel"))
-    implementation(libs.androidx.navigation.compose)
+    implementation(project(":app:login:login-data"))
     implementation(project(":app:register:register-view"))
     implementation(project(":app:register:register-viewmodel"))
+    implementation(project(":app:register:register-data"))
     implementation(project(":app:userMainScreen:userMainScreen-viewModel"))
     implementation(project(":app:userMainScreen:userMainScreen-data"))
     implementation(project(":app:userMainScreen:userMainScreen-view"))
     implementation(project(":app:gameScreen:gameScreen-view"))
     implementation(project(":app:gameScreen:gameScreen-viewModel"))
     implementation(project(":app:gameScreen:gameScreen-data"))
+    implementation(project(":app:adminMainScreen:adminMainScreen-view"))
+    implementation(project(":app:adminMainScreen:adminMainScreen-viewModel"))
+    implementation(project(":app:adminMainScreen:adminMainScreen-data"))
 
     implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)

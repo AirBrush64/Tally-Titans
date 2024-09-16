@@ -126,7 +126,7 @@ fun LoginScreen(
                                 modifier = Modifier.padding(top = 16.dp),
                                 color = MaterialTheme.colorScheme.primary
                             )
-                            navController.navigate("home")
+                            navController.navigate("adminHome")
                         }
                         result.isFailure -> {
                             Text(

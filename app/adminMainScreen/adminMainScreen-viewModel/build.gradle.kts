@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.usermainscreen_viewmodel"
+    namespace = "com.example.adminmainscreen_viewmodel"
     compileSdk = 34
 
     defaultConfig {
@@ -24,11 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
     }
 }
 
@@ -36,7 +36,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(project(":app:userMainScreen:userMainScreen-data"))
+    implementation(project(":app:adminMainScreen:adminMainScreen-data"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

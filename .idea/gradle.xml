@@ -10,6 +10,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/adminMainScreen" />
+            <option value="$PROJECT_DIR$/app/adminMainScreen/adminMainScreen-data" />
+            <option value="$PROJECT_DIR$/app/adminMainScreen/adminMainScreen-view" />
+            <option value="$PROJECT_DIR$/app/adminMainScreen/adminMainScreen-viewModel" />
             <option value="$PROJECT_DIR$/app/gameScreen" />
             <option value="$PROJECT_DIR$/app/gameScreen/gameScreen-data" />
             <option value="$PROJECT_DIR$/app/gameScreen/gameScreen-view" />

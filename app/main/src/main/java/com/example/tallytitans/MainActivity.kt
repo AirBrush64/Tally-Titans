@@ -1,5 +1,6 @@
 package com.example.tallytitans
 
+import AdminMainScreen
 import GameScreen
 import UserMainScreen
 import android.os.Bundle
@@ -35,8 +36,11 @@ fun MainApp() {
         composable("login") {
             LoginScreen(navController = navController)
         }
-        composable("home") {
+        composable("userHome") {
             UserMainScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+        }
+        composable("adminHome") {
+            AdminMainScreen(navController = navController, onProfileClick = { navController.navigate("home") })
         }
         composable("highscores") {
             HighscoreScreen(navController = navController)

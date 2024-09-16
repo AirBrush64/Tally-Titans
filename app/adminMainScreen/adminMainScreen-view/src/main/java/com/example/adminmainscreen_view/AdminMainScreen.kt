@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.graphics.Color
-import com.example.usermainscreen_view.R
+import com.example.adminmainscreen_view.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,7 +79,7 @@ fun AdminMainScreen(
                 }
 
                 Button(
-                    onClick = { navController.navigate("highscore") },
+                    onClick = { navController.navigate("highscores") },
                     modifier = Modifier
                         .fillMaxWidth() // Buttons füllen die gesamte Breite
                         .padding(horizontal = 32.dp, vertical = 8.dp)
@@ -88,16 +88,17 @@ fun AdminMainScreen(
                 ) {
                     Text("Highscore")
                 }
-            }
-            Button(
-                onClick = { navController.navigate("verwaltung") },
-                modifier = Modifier
-                    .fillMaxWidth() // Buttons füllen die gesamte Breite
-                    .padding(horizontal = 32.dp, vertical = 8.dp)
-                    .align(Alignment.End)
-                    .height(48.dp)
-            ) {
-                Text("Verwaltung")
+
+                Button(
+                    onClick = { navController.navigate("verwaltung") },
+                    modifier = Modifier
+                        .fillMaxWidth() // Buttons füllen die gesamte Breite
+                        .padding(horizontal = 32.dp, vertical = 8.dp)
+                        .align(Alignment.End)
+                        .height(48.dp)
+                ) {
+                    Text("Verwaltung")
+                }
             }
         }
     }

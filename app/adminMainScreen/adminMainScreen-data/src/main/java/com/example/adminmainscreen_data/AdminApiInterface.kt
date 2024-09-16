@@ -9,13 +9,13 @@ interface AdminApiInterface {
         val password: String
     )
 
-    data class LoginResponse(
+    data class AdminResponse(
         val token: String,
         val success: Boolean
     )
 
     interface ApiService {
         @POST("/login/")
-        suspend fun login(@Body request: LoginRequest): LoginResponse
+        suspend fun login(@Body request: LoginRequest): AdminResponse
     }
 }
