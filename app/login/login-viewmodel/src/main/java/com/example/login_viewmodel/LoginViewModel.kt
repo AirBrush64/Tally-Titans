@@ -45,17 +45,22 @@ class LoginViewModel(private val context: Context, private val repository: Login
 
             result.onSuccess { loginResponse ->
                 val userId = loginResponse.user.user_id
+                val userRole = loginResponse.user.role
                 Log.d("LoginViewModel", "User ID: $userId")
-                saveUserIdToPreferences(userId)
+                saveUserToPreferences(userId, userRole)
             }
 
             _isLoading.value = false
         }
     }
 
-    private fun saveUserIdToPreferences(userId: Int) {
+    private fun saveUserToPreferences(userId: Int, userRole: String) {
         val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().putInt("user_id", userId).commit()  // commit, um sicherzustellen, dass die Daten sofort gespeichert werden
-        Log.d("LoginViewModel", "User ID saved in SharedPreferences: $userId")
+        with(sharedPreferences.edit()) {
+            putInt("user_id", userId)
+            putString("user_role", userRole)
+            apply()  // Asynchron speichern
+        }
+        Log.d("LoginViewModel", "User data saved: ID=$userId, Role=$userRole")
     }
 }

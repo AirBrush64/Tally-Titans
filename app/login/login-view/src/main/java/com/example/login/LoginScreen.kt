@@ -1,5 +1,7 @@
 package com.example.login
 
+import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -34,6 +36,10 @@ fun LoginScreen(
     val password by loginViewModel.password.collectAsState()
     val isLoading by loginViewModel.isLoading.collectAsState()
     val loginResult by loginViewModel.loginResult.collectAsState()
+
+    val sharedPreferences = LocalContext.current.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+    val userRole = sharedPreferences.getString("user_role", null)  // Abrufen der Rolle aus den SharedPreferences
+
 
     Scaffold(
         topBar = {
@@ -126,7 +132,12 @@ fun LoginScreen(
                                 modifier = Modifier.padding(top = 16.dp),
                                 color = MaterialTheme.colorScheme.primary
                             )
-                            navController.navigate("adminHome")
+                            Log.d("LoginScreen: ", "Rolle: $userRole")
+                            if (userRole == "admin") {
+                                navController.navigate("adminHome")
+                            } else {
+                                navController.navigate("userHome")
+                            }
                         }
                         result.isFailure -> {
                             Text(
