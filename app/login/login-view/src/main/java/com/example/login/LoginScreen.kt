@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -25,7 +26,7 @@ import com.example.login.loginview.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
-    loginViewModel: LoginViewModel = viewModel(factory = LoginViewModelFactory()),
+    loginViewModel: LoginViewModel = viewModel(factory = LoginViewModelFactory(LocalContext.current)),
     navController: NavController
 ) {
     // Den UI-State vom ViewModel abrufen

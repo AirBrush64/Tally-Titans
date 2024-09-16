@@ -51,5 +51,4 @@ dependencies {
     testImplementation(libs.testng)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.compose.material3)
 }

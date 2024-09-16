@@ -10,7 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 
 class LoginFragment : Fragment() {
-    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
