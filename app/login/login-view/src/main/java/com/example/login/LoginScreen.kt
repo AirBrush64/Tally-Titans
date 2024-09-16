@@ -134,9 +134,13 @@ fun LoginScreen(
                             )
                             Log.d("LoginScreen: ", "Rolle: $userRole")
                             if (userRole == "admin") {
-                                navController.navigate("adminHome")
+                                navController.navigate("adminHome") {
+                                    popUpTo("login") { inclusive = true }
+                                }
                             } else {
-                                navController.navigate("userHome")
+                                navController.navigate("userHome") {
+                                    popUpTo("login") { inclusive = true }
+                                }
                             }
                         }
                         result.isFailure -> {
