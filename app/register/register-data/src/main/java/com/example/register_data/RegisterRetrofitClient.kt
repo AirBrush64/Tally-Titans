@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RegisterRetrofitClient {
-    private const val BASE_URL = "http://192.168.2.168:8000" // Deine API-Base-URL
+    private const val BASE_URL = "http://airbrushdns.duckdns.org:8000" // Deine API-Base-URL
 
     // Lazy initialisiert die Retrofit-Instanz erst bei der ersten Verwendung
     val apiService: RegisterApiInterface.ApiService by lazy {
