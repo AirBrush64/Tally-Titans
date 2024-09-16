@@ -22,14 +22,8 @@ class GameViewModel(private val repository: GameRepository, private val context:
     private val _result = MutableStateFlow<String?>(null)
     val result: StateFlow<String?> get() = _result
 
-    private val _isTimerRunning = MutableStateFlow(false)
-    val isTimerRunning: StateFlow<Boolean> get() = _isTimerRunning
-
     private val _tries = MutableStateFlow(3)  // Initialisiere mit einem Standardwert von 3
     val tries: StateFlow<Int> get() = _tries
-
-    private val _score = MutableStateFlow(0)
-    val score: StateFlow<Int> get() = _score
 
     private val _highscore = MutableStateFlow(0)
     val highscore: StateFlow<Int> get() = _highscore
@@ -65,7 +59,7 @@ class GameViewModel(private val repository: GameRepository, private val context:
                         _timeLeft.value = response.timeLeft.toLong()  // Initialisiert den Countdown
                         _tries.value = 3  // Setzt die Versuche für die neue Runde zurück
                         _result.value = null  // Setzt das Ergebnis zurück
-                        _score.value = response.personal_score  // Setzt den persönlichen Score des Benutzers
+                        _highscore.value = response.highscore  // Setzt den persönlichen Score des Benutzers
                         // Starte den Countdown
                         startCountdown(response.timeLeft)
                     },
@@ -126,8 +120,7 @@ class GameViewModel(private val repository: GameRepository, private val context:
             val result = repository.calculatePoints(user_id, wordLength, tries, timeLeft)
             result.fold(
                 onSuccess = { response ->
-                    _score.value = response.points  // Setze den neuen Punktestand
-                    _score.value += response.new_highscore  // Setze den neuen Highscore
+                    _highscore.value = response.new_highscore  // Setze den neuen Highscore
                     _result.value = "Punkte erfolgreich berechnet!"
                 },
                 onFailure = {

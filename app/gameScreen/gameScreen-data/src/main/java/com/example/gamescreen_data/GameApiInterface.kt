@@ -11,7 +11,7 @@ interface GameApiInterface {
     data class GameInfoResponse(
         val timeLeft: Int,
         val word: String,
-        val personal_score: Int
+        val highscore: Int
     )
 
     // Datenklasse für die Punkteberechnung

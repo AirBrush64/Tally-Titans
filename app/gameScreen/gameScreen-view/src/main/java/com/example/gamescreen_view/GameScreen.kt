@@ -29,7 +29,7 @@ fun GameScreen(
     val timeLeft by gameViewModel.timeLeft.collectAsState(initial = 0L)
     val word by gameViewModel.currentWord.collectAsState(initial = "Loading...")
     val attemptsLeft by gameViewModel.tries.collectAsState(initial = 3)
-    val score by gameViewModel.score.collectAsState(initial = 0)
+    val highscore by gameViewModel.highscore.collectAsState(initial = 0)
     val result by gameViewModel.result.collectAsState()
 
     var guessedCount by remember { mutableStateOf("") }
@@ -117,7 +117,7 @@ fun GameScreen(
 
         // Punktestand
         Text(
-            text = "Punkte: $score",
+            text = "Punkte: $highscore",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = textColor
