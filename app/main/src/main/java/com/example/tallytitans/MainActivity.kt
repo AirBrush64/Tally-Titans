@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.login.LoginScreen
 import com.example.register_view.RegisterScreen
 import com.example.tallytitans.ui.theme.TallyTitansTheme
+import com.example.usermainscreen_view.HighscoreScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,9 @@ fun MainApp() {
         }
         composable("home") {
             UserMainScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+        }
+        composable("highscores") {
+            HighscoreScreen(navController = navController)
         }
         composable("register") {
             RegisterScreen(navController = navController)

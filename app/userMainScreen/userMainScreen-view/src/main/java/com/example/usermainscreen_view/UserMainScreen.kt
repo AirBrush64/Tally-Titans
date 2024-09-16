@@ -79,14 +79,14 @@ fun UserMainScreen(
                 }
 
                 Button(
-                    onClick = { navController.navigate("highscore") },
+                    onClick = { navController.navigate("highscores") },
                     modifier = Modifier
                         .fillMaxWidth() // Buttons füllen die gesamte Breite
                         .padding(horizontal = 32.dp, vertical = 8.dp)
                         .align(Alignment.End)
                         .height(48.dp)
                 ) {
-                    Text("Highscore")
+                    Text("Highscores")
                 }
             }
         }

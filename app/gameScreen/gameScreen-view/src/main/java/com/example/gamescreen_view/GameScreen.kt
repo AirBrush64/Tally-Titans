@@ -33,11 +33,18 @@ fun GameScreen(
     val result by gameViewModel.result.collectAsState()
 
     var guessedCount by remember { mutableStateOf("") }
+    var isInputEnabled by remember { mutableStateOf(true) }  // Status der Eingabefähigkeit
     val scope = rememberCoroutineScope()
 
-    // Startet das Spiel (Polling für Wort und Countdown läuft im ViewModel)
+    // Spiel starten, wenn der Screen angezeigt wird
     LaunchedEffect(Unit) {
         gameViewModel.startGame()
+    }
+
+    // Beobachte das Wort und aktiviere das Eingabefeld bei einem neuen Wort
+    LaunchedEffect(word) {
+        isInputEnabled = true  // Setze das Eingabefeld auf aktiv, wenn sich das Wort ändert
+        guessedCount = ""  // Leere das Eingabefeld bei einem neuen Wort
     }
 
     // Hintergrund- und Textfarben basierend auf dem aktuellen Theme
@@ -86,7 +93,8 @@ fun GameScreen(
             onValueChange = { guessedCount = it },
             label = { Text("Verschiedene Buchstaben", color = textColor) },
             modifier = Modifier.fillMaxWidth(),
-            textStyle = LocalTextStyle.current.copy(color = textColor)
+            textStyle = LocalTextStyle.current.copy(color = textColor),
+            enabled = isInputEnabled  // Steuerung der Bearbeitbarkeit
         )
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -94,10 +102,17 @@ fun GameScreen(
         Button(
             onClick = {
                 scope.launch {
-                    gameViewModel.submitAnswer(guessedCount.toIntOrNull() ?: 0)
+                    val result = guessedCount.toIntOrNull() ?: 0
+                    gameViewModel.submitAnswer(result)
+
+                    // Sperre das Textfeld und den Button, wenn attemptsLeft <= 0 ist (nach 3 Versuchen)
+                    if (attemptsLeft <= 1 || result == gameViewModel.currentWord.value.toSet().size) {
+                        isInputEnabled = false  // Eingabe deaktivieren
+                    }
                 }
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            enabled = isInputEnabled  // Button auch deaktivieren, wenn keine Eingabe möglich
         ) {
             Text("Antwort eingeben")
         }
