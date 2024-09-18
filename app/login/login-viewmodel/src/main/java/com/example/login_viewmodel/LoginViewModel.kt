@@ -46,8 +46,18 @@ class LoginViewModel(private val context: Context, private val repository: Login
             result.onSuccess { loginResponse ->
                 val userId = loginResponse.user.user_id
                 val userRole = loginResponse.user.role
-                Log.d("LoginViewModel", "User ID: $userId")
-                saveUserToPreferences(userId, userRole)
+                val isApproved = loginResponse.user.is_approved  // Check the approval status
+
+                Log.d("LoginViewModel", "User ID: $userId, Approved: $isApproved")
+
+                if (isApproved) {
+                    // Save user info only if approved
+                    saveUserToPreferences(userId, userRole)
+                } else {
+                    // Handle the case when the user is not approved
+                    Log.d("LoginViewModel", "User is not approved.")
+                    _loginResult.value = Result.failure(Exception("User not approved"))
+                }
             }
 
             _isLoading.value = false

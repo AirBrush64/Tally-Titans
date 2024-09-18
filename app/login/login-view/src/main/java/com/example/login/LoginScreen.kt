@@ -136,10 +136,12 @@ fun LoginScreen(
                             if (userRole == "admin") {
                                 navController.navigate("adminHome") {
                                     popUpTo("login") { inclusive = true }
+                                    launchSingleTop = true
                                 }
                             } else {
                                 navController.navigate("userHome") {
                                     popUpTo("login") { inclusive = true }
+                                    launchSingleTop = true
                                 }
                             }
                         }

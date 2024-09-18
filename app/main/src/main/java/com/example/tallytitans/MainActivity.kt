@@ -2,6 +2,7 @@ package com.example.tallytitans
 
 import AdminMainScreen
 import GameScreen
+import ManagementScreen
 import UserMainScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,6 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.login.LoginScreen
+import com.example.managementscreen_view.ManagementUserScreen
+import com.example.managementscreen_view.ManagementWordScreen
 import com.example.register_view.RegisterScreen
 import com.example.tallytitans.ui.theme.TallyTitansTheme
 import com.example.usermainscreen_view.HighscoreScreen
@@ -41,6 +44,15 @@ fun MainApp() {
         }
         composable("adminHome") {
             AdminMainScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+        }
+        composable("management") {
+            ManagementScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+        }
+        composable("userManagement") {
+            ManagementUserScreen(navController = navController)
+        }
+        composable("wordManagement") {
+            ManagementWordScreen(navController = navController)
         }
         composable("highscores") {
             HighscoreScreen(navController = navController)

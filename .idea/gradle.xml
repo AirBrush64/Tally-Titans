@@ -23,6 +23,10 @@
             <option value="$PROJECT_DIR$/app/login/login-view" />
             <option value="$PROJECT_DIR$/app/login/login-viewmodel" />
             <option value="$PROJECT_DIR$/app/main" />
+            <option value="$PROJECT_DIR$/app/managementScreen" />
+            <option value="$PROJECT_DIR$/app/managementScreen/managementScreen-data" />
+            <option value="$PROJECT_DIR$/app/managementScreen/managementScreen-view" />
+            <option value="$PROJECT_DIR$/app/managementScreen/managementScreen-viewModel" />
             <option value="$PROJECT_DIR$/app/register" />
             <option value="$PROJECT_DIR$/app/register/register-data" />
             <option value="$PROJECT_DIR$/app/register/register-view" />
