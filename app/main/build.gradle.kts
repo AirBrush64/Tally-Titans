@@ -75,6 +75,9 @@ dependencies {
     implementation(project(":app:adminMainScreen:adminMainScreen-view"))
     implementation(project(":app:adminMainScreen:adminMainScreen-viewModel"))
     implementation(project(":app:adminMainScreen:adminMainScreen-data"))
+    implementation(project(":app:managementScreen:managementScreen-view"))
+    implementation(project(":app:managementScreen:managementScreen-viewModel"))
+    implementation(project(":app:managementScreen:managementScreen-data"))
 
     implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)

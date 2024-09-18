@@ -15,7 +15,7 @@ interface LoginApiInterface {
         val username: String,
         val highscore: Int,
         val role: String,
-        val is_approved: String,
+        val is_approved: Boolean,
         val email: String,
         val password_hash: String
     )

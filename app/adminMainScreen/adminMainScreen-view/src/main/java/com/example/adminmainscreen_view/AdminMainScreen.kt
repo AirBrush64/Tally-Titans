@@ -90,14 +90,14 @@ fun AdminMainScreen(
                 }
 
                 Button(
-                    onClick = { navController.navigate("verwaltung") },
+                    onClick = { navController.navigate("management") },
                     modifier = Modifier
                         .fillMaxWidth() // Buttons füllen die gesamte Breite
                         .padding(horizontal = 32.dp, vertical = 8.dp)
                         .align(Alignment.End)
                         .height(48.dp)
                 ) {
-                    Text("Verwaltung")
+                    Text("Management")
                 }
             }
         }

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.register"
+    namespace = "com.example.usermainscreen_viewmodel"
     compileSdk = 34
 
     defaultConfig {
@@ -39,12 +39,26 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.material)
+    implementation(project(":app:userMainScreen:userMainScreen-data"))
+    implementation(project(":app:managementScreen:managementScreen-data"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // ViewModel utilities for Compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    // LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    // Lifecycle utilities for Compose
+    implementation(libs.androidx.lifecycle.runtime.compose)
+
+    // Saved state module for ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
 }
