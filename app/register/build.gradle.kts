@@ -47,4 +47,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Jetpack Compose Abhängigkeiten
+    implementation(libs.androidx.compose.ui.graphics)     // Jetpack Compose Graphics
+    implementation(libs.androidx.compose.ui.text)         // Jetpack Compose Text
+    implementation(libs.androidx.compose.foundation)      // Jetpack Compose Foundation
+    implementation(libs.androidx.lifecycle.viewmodel.compose)  // ViewModel für Compose
+    implementation(libs.androidx.navigation.runtime.ktx)  // Navigation Runtime
+    implementation(libs.androidx.navigation.compose)
+    implementation(platform(libs.androidx.compose.bom))
 }

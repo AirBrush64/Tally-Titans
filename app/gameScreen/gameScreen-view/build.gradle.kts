@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.usermainscreen_view"
+    namespace = "com.example.gamescreen_view"
     compileSdk = 34
 
     defaultConfig {

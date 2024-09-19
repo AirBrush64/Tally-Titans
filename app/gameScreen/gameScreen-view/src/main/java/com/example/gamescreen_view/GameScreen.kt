@@ -1,4 +1,3 @@
-import android.os.CountDownTimer
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -12,8 +11,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.usermainscreen_viewmodel.GameViewModel
-import com.example.usermainscreen_viewmodel.GameViewModelFactory
+import com.example.gamescreen_viewmodel.GameViewModel
+import com.example.gamescreen_viewmodel.GameViewModelFactory
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.background
 import androidx.compose.material3.LocalTextStyle

@@ -1,4 +1,4 @@
-package com.example.usermainscreen_viewmodel
+package com.example.gamescreen_viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
