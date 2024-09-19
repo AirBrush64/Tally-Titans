@@ -62,9 +62,9 @@ fun ManagementUserScreen(
         sheetContent = {
             // Formular zum Hinzufügen oder Bearbeiten eines Benutzers
             ManagementUserForm(
-                // Prefilling der Felder nur im Bearbeitungsmodus
-                username = if (isEditing) newUsername else "",
-                email = if (isEditing) newEmail else "",
+                // Prefilling der Felder für Bearbeitung oder Neuanlage
+                username = newUsername,
+                email = newEmail,
                 password = newPassword,
                 onUsernameChange = { newUsername = it },
                 onEmailChange = { newEmail = it },
@@ -115,7 +115,7 @@ fun ManagementUserScreen(
                             .fillMaxSize()
                             .padding(16.dp)
                     ) {
-                        items(users) { user ->
+                        items(users.reversed()) { user ->
                             UserItem(
                                 user = user,
                                 onEditClick = {

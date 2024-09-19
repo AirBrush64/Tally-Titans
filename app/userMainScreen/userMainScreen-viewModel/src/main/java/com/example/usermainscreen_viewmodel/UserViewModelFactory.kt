@@ -6,6 +6,7 @@ import com.example.usermainscreen_data.UserRemoteDataSource
 import com.example.usermainscreen_data.UserRepository
 import com.example.usermainscreen_data.UserRetrofitClient
 
+// ViewModelFactory zum Erstellen des ViewModels mit cutom parameter
 class UserViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val apiService = UserRetrofitClient.apiService

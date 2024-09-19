@@ -4,6 +4,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface LoginApiInterface {
+    // Login Request zum übergeben der email und passwort an das Backend
     data class LoginRequest(
         val email: String,
         val password: String

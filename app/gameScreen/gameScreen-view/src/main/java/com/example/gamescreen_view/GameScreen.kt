@@ -20,12 +20,13 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.platform.LocalContext
 
+// Game Screen für das Spiel
 @Composable
 fun GameScreen(
     gameViewModel: GameViewModel = viewModel(factory = GameViewModelFactory(LocalContext.current)),
     navController: NavController
 ) {
-    // Beobachten der ViewModel-Daten
+    // Beobachten der ViewModel-Daten für Veränderungen
     val timeLeft by gameViewModel.timeLeft.collectAsState(initial = 0L)
     val word by gameViewModel.currentWord.collectAsState(initial = "Loading...")
     val attemptsLeft by gameViewModel.tries.collectAsState(initial = 3)
@@ -51,7 +52,7 @@ fun GameScreen(
     val backgroundColor = MaterialTheme.colorScheme.background
     val textColor = MaterialTheme.colorScheme.onBackground
 
-    // UI für das Spiel
+    // Spalte mit allen Views in richtiger Reihnfolge
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -105,8 +106,8 @@ fun GameScreen(
                     val result = guessedCount.toIntOrNull() ?: 0
                     gameViewModel.submitAnswer(result)
 
-                    // Sperre das Textfeld und den Button, wenn attemptsLeft <= 0 ist (nach 3 Versuchen)
-                    if (attemptsLeft <= 1 || result == gameViewModel.currentWord.value.toSet().size) {
+                    // Sperre das Textfeld und den Button, wenn attemptsLeft <= 1 ist oder das Ergebnis korrekt ist
+                    if (attemptsLeft <= 1 || result == gameViewModel.correctCount.value) {
                         isInputEnabled = false  // Eingabe deaktivieren
                     }
                 }
@@ -130,7 +131,7 @@ fun GameScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Punktestand
+        // Punktestand Anzeige
         Text(
             text = "Punkte: $highscore",
             fontSize = 24.sp,

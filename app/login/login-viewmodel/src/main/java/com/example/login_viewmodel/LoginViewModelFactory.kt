@@ -7,6 +7,7 @@ import com.example.login_data.LoginRemoteDataSource
 import com.example.login_data.LoginRepository
 import com.example.login_data.LoginRetrofitClient
 
+// ViewModelFactory zum erstellen des ViewModels mit cutom parameter
 class LoginViewModelFactory(
     private val context: Context  // Context wird hier übergeben
 ) : ViewModelProvider.Factory {

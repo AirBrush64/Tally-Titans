@@ -5,11 +5,13 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface UserApiInterface {
+    //Highscore Response mit Benutzername und Passwort
     data class HighscoreResponse(
         val username: String,
         val highscore: Int
     )
 
+    //Endpunkte für API calls
     interface ApiService {
         @GET("/highscores/")
         suspend fun getHighscores(): List<HighscoreResponse>

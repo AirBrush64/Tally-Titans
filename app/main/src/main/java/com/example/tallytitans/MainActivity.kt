@@ -31,6 +31,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// Navigierung der jeweiligen Ansichten
 @Composable
 fun MainApp() {
     val navController = rememberNavController()
@@ -40,13 +41,13 @@ fun MainApp() {
             LoginScreen(navController = navController)
         }
         composable("userHome") {
-            UserMainScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+            UserMainScreen(navController = navController, onProfileClick = { navController.navigate("login") })
         }
         composable("adminHome") {
-            AdminMainScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+            AdminMainScreen(navController = navController, onProfileClick = { navController.navigate("login") })
         }
         composable("management") {
-            ManagementScreen(navController = navController, onProfileClick = { navController.navigate("home") })
+            ManagementScreen(navController = navController, onProfileClick = { navController.navigate("login") })
         }
         composable("userManagement") {
             ManagementUserScreen(navController = navController)

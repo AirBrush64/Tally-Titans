@@ -37,8 +37,10 @@ fun LoginScreen(
     val isLoading by loginViewModel.isLoading.collectAsState()
     val loginResult by loginViewModel.loginResult.collectAsState()
 
+    //UserID wird hier gespeichert nach login, damit die Highscore Anzeige während des Spiels funktioniert
     val sharedPreferences = LocalContext.current.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-    val userRole = sharedPreferences.getString("user_role", null)  // Abrufen der Rolle aus den SharedPreferences
+    //Rolle wird hier gespeichert nach login, damit entschieden werden kann, ob die Person die Admin Ansicht bekommt oder die User Ansicht
+    val userRole = sharedPreferences.getString("user_role", null)
 
 
     Scaffold(
@@ -54,20 +56,23 @@ fun LoginScreen(
                 .padding(paddingValues),
             contentAlignment = Alignment.Center
         ) {
+            // Icon Anzeige
             Image(
-                    painter = painterResource(id = R.drawable.logo),
-            contentDescription = stringResource(id = R.string.image_description),
-            modifier = Modifier
-                .padding(bottom = 24.dp)
-                .align(Alignment.TopCenter)
-                .size(175.dp)
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = stringResource(id = R.string.image_description),
+                modifier = Modifier
+                    .padding(bottom = 24.dp)
+                    .align(Alignment.TopCenter)
+                    .size(175.dp)
             )
+            // Spalte mit allen Views in richtiger Reinfolge
             Column(
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
                     .wrapContentSize()
             ) {
+                //Text für Login Account
                 Text(
                     text = "Log in to your account",
                     style = MaterialTheme.typography.titleLarge,
@@ -75,7 +80,7 @@ fun LoginScreen(
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
 
-                // Benutzername-Eingabe
+                // Email-Eingabe
                 OutlinedTextField(
                     value = email,
                     onValueChange = { loginViewModel.onEmailChanged(it) },

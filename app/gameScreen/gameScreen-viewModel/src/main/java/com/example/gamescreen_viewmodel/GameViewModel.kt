@@ -10,6 +10,7 @@ import com.example.gamescreen_data.GameRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import java.util.Locale
 
 class GameViewModel(private val repository: GameRepository, private val context: Context) : ViewModel() {
 
@@ -21,6 +22,9 @@ class GameViewModel(private val repository: GameRepository, private val context:
 
     private val _result = MutableStateFlow<String?>(null)
     val result: StateFlow<String?> get() = _result
+
+    private val _correctCount = MutableStateFlow(0)  // CorrectCount als Int speichern
+    val correctCount: StateFlow<Int> = _correctCount
 
     private val _tries = MutableStateFlow(3)  // Initialisiere mit einem Standardwert von 3
     val tries: StateFlow<Int> get() = _tries
@@ -92,19 +96,34 @@ class GameViewModel(private val repository: GameRepository, private val context:
 
     fun submitAnswer(guessedCount: Int) {
         viewModelScope.launch {
-            val correctCount = _currentWord.value.toSet().size
+            // Normalisiere das aktuelle Wort, um Groß- und Kleinschreibung zu ignorieren und Umlaute korrekt zu zählen
+            val normalizedWord = _currentWord.value.lowercase(Locale.getDefault())
+
+            // Nutze ein Set, um die einzigartigen Buchstaben (ohne Duplikate) zu zählen
+            val correctCount = normalizedWord.toCharArray()
+                .filter { it.isLetter() } // Nur Buchstaben zählen, keine Zahlen oder Sonderzeichen
+                .toSet()
+                .size
+
+            _correctCount.value = correctCount
+
+            // Prüfe, ob die geratene Anzahl der unterschiedlichen Buchstaben korrekt ist
             if (guessedCount == correctCount) {
                 _result.value = "Richtig! Es gibt $correctCount verschiedene Buchstaben."
+
+                // Berechne und sende die Punkte
                 calculateAndSubmitPoints(
-                    _userId.value.toString(),  // Greife auf den Wert zu und gib "No User ID" als Fallback aus
-                    _currentWord.value.length,      // Länge des aktuellen Worts
-                    _tries.value,            // Versuche übrig
-                    _timeLeft.value.toInt()         // Zeit übrig, hier in Int konvertiert
+                    _userId.value.toString(),  // Verwende den Benutzer-ID-Wert
+                    _currentWord.value.length, // Länge des aktuellen Worts
+                    _tries.value,              // Übriggebliebene Versuche
+                    _timeLeft.value.toInt()    // Übrige Zeit (in Sekunden)
                 )
             } else {
+                // Reduziere die verbleibenden Versuche
                 val remainingAttempts = _tries.value - 1
                 _tries.value = remainingAttempts
 
+                // Wenn keine Versuche mehr übrig sind, gib die richtige Antwort aus
                 if (remainingAttempts == 0) {
                     _result.value = "Keine Versuche mehr! Die richtige Antwort ist $correctCount."
                 } else {

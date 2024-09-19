@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.graphics.Color
 import com.example.usermainscreen_view.R
 
+//Hauptmanagement Screen für die Entscheidung für User Management oder Wörter Management
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ManagementScreen(
@@ -28,7 +29,7 @@ fun ManagementScreen(
                 actions = {
                     IconButton(onClick = onProfileClick) {
                         Icon(
-                            painter = painterResource(id = R.drawable.account_icon), // Dein Profil-Icon hier
+                            painter = painterResource(id = R.drawable.account_icon),
                             contentDescription = "Profile Icon",
                             modifier = Modifier.size(40.dp),
                             tint = iconTintColor

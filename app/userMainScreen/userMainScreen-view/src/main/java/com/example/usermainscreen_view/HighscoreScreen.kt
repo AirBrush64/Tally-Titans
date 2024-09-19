@@ -22,6 +22,7 @@ import com.example.usermainscreen_viewmodel.UserViewModelFactory
 import androidx.compose.foundation.isSystemInDarkTheme
 
 
+// Highscore Screen Anischt
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HighscoreScreen(

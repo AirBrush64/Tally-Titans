@@ -7,6 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 
+// Bottom Sheet für eingabe eines neuen Users oder fürs editieren eines Users
+// Wird fürs updaten und auch fürs hinzufügen verwendet
 @Composable
 fun ManagementUserForm(
     username: String,

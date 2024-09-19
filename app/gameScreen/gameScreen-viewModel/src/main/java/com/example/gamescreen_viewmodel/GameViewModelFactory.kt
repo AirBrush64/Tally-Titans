@@ -7,6 +7,7 @@ import com.example.gamescreen_data.GameRemoteDataSource
 import com.example.gamescreen_data.GameRepository
 import com.example.gamescreen_data.GameRetrofitClient
 
+// ViewModelFactory zum erstellen des ViewModels mit cutom parameter
 class GameViewModelFactory(
     private val context: Context  // Context wird hier übergeben
 ) : ViewModelProvider.Factory {

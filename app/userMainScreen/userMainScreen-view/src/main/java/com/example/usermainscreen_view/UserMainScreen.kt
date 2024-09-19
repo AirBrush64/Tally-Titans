@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.graphics.Color
 import com.example.usermainscreen_view.R
 
+//User Screen Ansicht nach Login
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserMainScreen(
@@ -28,7 +29,7 @@ fun UserMainScreen(
                 actions = {
                     IconButton(onClick = onProfileClick) {
                         Icon(
-                            painter = painterResource(id = R.drawable.account_icon), // Dein Profil-Icon hier
+                            painter = painterResource(id = R.drawable.account_icon),
                             contentDescription = "Profile Icon",
                             modifier = Modifier.size(40.dp),
                             tint = iconTintColor
@@ -52,21 +53,22 @@ fun UserMainScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                // Größere Titeltexte wie im Wireframe
+                // Text für App Name
                 Text(
                     text = "Tally Titans",
-                    fontSize = 32.sp, // Größerer Text für den Titel
+                    fontSize = 32.sp, //
                     modifier = Modifier.padding(top = 48.dp, bottom = 8.dp),
                     color = iconTintColor
                 )
+                // Text für App Name
                 Text(
                     text = "Counting Game",
-                    fontSize = 20.sp, // Größerer Text für den Untertitel
+                    fontSize = 20.sp, //
                     color = iconTintColor,
                     modifier = Modifier.padding(bottom = 48.dp),
                 )
 
-                // Buttons wie im Wireframe: Volle Breite, zentriert
+                // Button für Navigation Enter Game
                 Button(
                     onClick = { navController.navigate("game") },
                     modifier = Modifier
@@ -78,6 +80,7 @@ fun UserMainScreen(
                     Text("Enter Game")
                 }
 
+                // Button für Navigation Highscore Ansich
                 Button(
                     onClick = { navController.navigate("highscores") },
                     modifier = Modifier

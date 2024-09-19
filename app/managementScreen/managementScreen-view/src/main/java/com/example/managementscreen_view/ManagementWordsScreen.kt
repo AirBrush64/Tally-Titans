@@ -29,7 +29,7 @@ import com.example.managementscreen_viewmodel.ManagementWordViewModelFactory
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.lazy.items
 
-
+// Bottom Sheet für eingabe eines neuen Wortes
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ManagementWordScreen(
@@ -58,7 +58,6 @@ fun ManagementWordScreen(
     BottomSheetScaffold(
         scaffoldState = bottomSheetScaffoldState,
         sheetContent = {
-            // Wiederverwendbare WordForm für Hinzufügen eines neuen Wortes
             ManagementWordsForm(
                 word = newWord,
                 onWordChange = { newWord = it },

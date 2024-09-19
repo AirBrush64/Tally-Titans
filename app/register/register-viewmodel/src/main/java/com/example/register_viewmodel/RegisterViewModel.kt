@@ -16,31 +16,40 @@ class RegisterViewModel(private val repository: RegisterRepository) : ViewModel(
     private val _username = MutableStateFlow("")
     val username: StateFlow<String> = _username
 
+    //Variable zum Verarbeiten von Änderungen des Wertes
     private val _email = MutableStateFlow("")
+    //Leesbare Variable für die View
     val email: StateFlow<String> = _email
 
+    //Variable zum Verarbeiten von Änderungen des Wertes
     private val _password = MutableStateFlow("")
+    //Leesbare Variable für die View
     val password: StateFlow<String> = _password
 
+    //Variable zum Verarbeiten von Änderungen des Wertes
     private val _isLoading = MutableStateFlow(false)
+    //Leesbare Variable für die View
     val isLoading: StateFlow<Boolean> = _isLoading
 
+    //Variable zum Verarbeiten von Änderungen des Wertes
     val _registerResult = MutableStateFlow<Result<RegisterApiInterface.RegisterResponse>?>(null)
-    val loginResult = _registerResult.asStateFlow()
+    //Leesbare Variable für die View
+    val registerResult = _registerResult.asStateFlow()
 
-    // Methoden zum Aktualisieren der Eingabefelder
+    // Methode zum Aktualisieren des Username-Eingabe-Felds
     fun onUsernameChanged(newUsername: String) {
         _username.value = newUsername
     }
-
+    // Methode zum Aktualisieren des Email-Eingabe-Felds
     fun onEmailChanged(newEmail: String) {
         _email.value = newEmail
     }
-
+    // Methode zum Aktualisieren des Passwort-Eingabe-Felds
     fun onPasswordChanged(newPassword: String) {
         _password.value = newPassword
     }
 
+    // Methode zum Registrieren des neuen Users
     fun register() {
         _isLoading.value = true
         viewModelScope.launch {

@@ -6,7 +6,7 @@ class UserRepository(private val remoteDataSource: UserRemoteDataSource) {
         return try {
             // Anfrage an den Remote Data Source und Rückgabe des Resultats
             val response = remoteDataSource.highscore()
-            Result.success(response) // Erfolg zurückgeben
+            Result.success(response) // Bei Erfolg ein Erfolg Response
         } catch (e: Exception) {
             Result.failure(e) // Bei Fehler ein Failure-Result zurückgeben
         }

@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
+    //Liste von Highscore aus der Response von der API
     private val _highscores = MutableStateFlow<List<UserApiInterface.HighscoreResponse>>(emptyList())
     val highscores: StateFlow<List<UserApiInterface.HighscoreResponse>> get() = _highscores
 

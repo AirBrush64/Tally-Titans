@@ -4,28 +4,31 @@ import android.util.Log
 
 class ManagementRepository(private val remoteDataSource: ManagementRemoteDataSource) {
 
+    // Benutzer ausgeben Funktion
     suspend fun getUsers(): List<ManagementApiInterface.UsersResponse> {
         return try {
             val response = remoteDataSource.users()
             Log.d("Repository", "Benutzerliste erfolgreich geladen: $response")  // Debugging hinzufügen
-            response
+            response // Bei Erfolg wird die Response ausgegeben
         } catch (e: Exception) {
             Log.e("Repository", "Fehler beim Laden der Benutzer: ${e.localizedMessage}")
-            emptyList()
+            emptyList() // Bei Fehler wird eine leere Liste zurück gegeben
         }
     }
 
+    // Wörterliste ausgeben Funktion
     suspend fun getWords(): List<ManagementApiInterface.WordsResponse> {
         return try {
             val response = remoteDataSource.words()
             Log.d("Repository", "Wortliste erfolgreich geladen: $response")  // Debugging hinzufügen
-            response
+            response // Bei Erfolg wird die Response ausgegeben
         } catch (e: Exception) {
             Log.e("Repository", "Fehler beim Laden der Wortliste: ${e.localizedMessage}")
-            emptyList()
+            emptyList() // Bei Fehler wird eine leere Liste zurück gegeben
         }
     }
 
+    // Neuen User Hinzufügen Funktion
     suspend fun addNewUser(username: String, email: String, password: String): Result<ManagementApiInterface.NewUserResponse> {
         return try {
             val response = remoteDataSource.addNewUser(ManagementApiInterface.NewUserRequest(username, email, password))
@@ -37,6 +40,7 @@ class ManagementRepository(private val remoteDataSource: ManagementRemoteDataSou
         }
     }
 
+    // Neues Wort hinzufügen Funktion
     suspend fun addNewWord(word: String): Result<ManagementApiInterface.NewWordResponse> {
         return try {
             val response = remoteDataSource.addNewWord(ManagementApiInterface.NewWordRequest(word))
@@ -48,6 +52,7 @@ class ManagementRepository(private val remoteDataSource: ManagementRemoteDataSou
         }
     }
 
+    // User Update Funktion
     suspend fun updateUser(userId: String, username: String, email: String, password: String): Result<ManagementApiInterface.UpdateUserResponse> {
         return try {
             val response = remoteDataSource.updateUser(ManagementApiInterface.UpdateUserRequest(userId, username, email, password))

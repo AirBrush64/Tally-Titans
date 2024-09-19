@@ -60,6 +60,7 @@ fun RegisterScreen(
                     .fillMaxWidth()
                     .wrapContentSize()
             ) {
+                // Text für Register Flow
                 Text(
                     text = "Create a new account",
                     style = MaterialTheme.typography.titleLarge,

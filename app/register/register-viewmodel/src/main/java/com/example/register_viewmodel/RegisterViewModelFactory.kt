@@ -6,6 +6,7 @@ import com.example.register_data.RegisterRemoteDataSource
 import com.example.register_data.RegisterRepository
 import com.example.register_data.RegisterRetrofitClient
 
+// ViewModelFactory zum erstellen des ViewModels mit cutom parameter
 class RegisterViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val apiService = RegisterRetrofitClient.apiService

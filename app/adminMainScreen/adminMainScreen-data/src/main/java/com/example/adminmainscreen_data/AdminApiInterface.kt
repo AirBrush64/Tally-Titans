@@ -1,21 +1,19 @@
 package com.example.usermainscreen_data
 
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AdminApiInterface {
-    data class LoginRequest(
-        val email: String,
-        val password: String
+    // Highscore Response mit Benutzername und Passwort
+    data class HighscoreResponse(
+        val username: String,
+        val highscore: Int
     )
 
-    data class AdminResponse(
-        val token: String,
-        val success: Boolean
-    )
-
+    // Endpunkte für API calls
     interface ApiService {
-        @POST("/login/")
-        suspend fun login(@Body request: LoginRequest): AdminResponse
+        @GET("/highscores/")
+        suspend fun getHighscores(): List<HighscoreResponse>
     }
 }

@@ -1,28 +1,30 @@
 package com.example.usermainscreen_viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.usermainscreen_data.AdminApiInterface
 import com.example.usermainscreen_data.AdminRepository
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class AdminViewModel(private val repository: AdminRepository) : ViewModel() {
 
-    private val _username = MutableStateFlow("")
-    val username = _username.asStateFlow()
+    //Liste von Highscore aus der Response von der API
+    private val _highscores = MutableStateFlow<List<AdminApiInterface.HighscoreResponse>>(emptyList())
+    val highscores: StateFlow<List<AdminApiInterface.HighscoreResponse>> get() = _highscores
 
-    private val _password = MutableStateFlow("")
-    val password = _password.asStateFlow()
-
-    private val _isLoading = MutableStateFlow(false)
-    val isLoading = _isLoading.asStateFlow()
-
-    // Benutzername aktualisieren
-    fun onEmailChanged(newUsername: String) {
-        _username.value = newUsername
-    }
-
-    // Passwort aktualisieren
-    fun onPasswordChanged(newPassword: String) {
-        _password.value = newPassword
+    // Funktion zum Laden der Highscore
+    fun loadHighscores() {
+        viewModelScope.launch {
+            val result = repository.getHighscores()
+            result.onSuccess {
+                _highscores.value = it
+            }.onFailure {
+                // Fehlerbehandlung wenn die Werte von den Highscores nicht gesetzt werden kann
+                _highscores.value = listOf(AdminApiInterface.HighscoreResponse("Error", 0))
+            }
+        }
     }
 }

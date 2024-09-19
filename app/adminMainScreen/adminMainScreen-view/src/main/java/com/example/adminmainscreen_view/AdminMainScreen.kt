@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.graphics.Color
 import com.example.adminmainscreen_view.R
 
+//Admin Screen nach Login
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AdminMainScreen(
@@ -26,9 +27,10 @@ fun AdminMainScreen(
                     Spacer(modifier = Modifier.fillMaxWidth())
                 },
                 actions = {
+                    // Icon Button für Profil Ansicht (NICHT IMPLEMENTIERT)
                     IconButton(onClick = onProfileClick) {
                         Icon(
-                            painter = painterResource(id = R.drawable.account_icon), // Dein Profil-Icon hier
+                            painter = painterResource(id = R.drawable.account_icon),
                             contentDescription = "Profile Icon",
                             modifier = Modifier.size(40.dp),
                             tint = iconTintColor
@@ -49,6 +51,7 @@ fun AdminMainScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
+                //Alignments für die Spalte
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -66,7 +69,6 @@ fun AdminMainScreen(
                     modifier = Modifier.padding(bottom = 48.dp),
                 )
 
-                // Buttons wie im Wireframe: Volle Breite, zentriert
                 Button(
                     onClick = { navController.navigate("game") },
                     modifier = Modifier

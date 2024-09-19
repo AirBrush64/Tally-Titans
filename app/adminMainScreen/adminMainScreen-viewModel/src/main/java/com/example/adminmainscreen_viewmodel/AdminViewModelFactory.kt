@@ -6,6 +6,7 @@ import com.example.usermainscreen_data.AdminRemoteDataSource
 import com.example.usermainscreen_data.AdminRepository
 import com.example.usermainscreen_data.AdminRetrofitClient
 
+// ViewModelFactory zum erstellen des ViewModels mit cutom parameter
 class AdminViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val apiService = AdminRetrofitClient.apiService
